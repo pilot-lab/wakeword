@@ -20,8 +20,8 @@
 const std::string ALEXA_TASK_VERSION = "~0.7.0";
 const std::string MODEL_FILE = "../ext/resources/spot-alexa-rpi.snsr";
 
-#define NETFILE      "/mnt/UDISK/Data/alexa/thfft_alexa_enus_v1_524kb_am.raw"
-#define SEARCHFILE   "/mnt/UDISK/Data/alexa/thfft_alexa_enus_v1_524kb_search_14.raw" // pre-built search
+#define NETFILE      "/pilot-app/pilot-config/wakeword/alexa/thfft_alexa_enus_v1_524kb_am.raw"
+#define SEARCHFILE   "/pilot-app/pilot-config/wakeword/alexa/thfft_alexa_enus_v1_524kb_search_14.raw" // pre-built search
 #define NBEST              (1)                /* Number of results */
 #define MAXSTR             (512)              /* Output string size */
 #define SHOWAMP            (0)                /* Display amplitude */
@@ -183,7 +183,6 @@ void SensoryWakeWordEngine::mainLoop() {
 		
 			if (!thfRecogPipe(m_session, m_recog, SAMPLES_PRE_FRAME, buf, RECOG_ONLY, &status))
 				cout << "recogPipe!" << endl;
-
 			if (status == RECOG_DONE)
 			{
 				done = true;
