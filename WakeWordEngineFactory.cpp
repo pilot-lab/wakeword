@@ -15,7 +15,7 @@
 #include "Logger.h"
 #include "WakeWordUtils.h"
 #include "SensoryWakeWordEngine.h"
-
+#include "GPIOWakeWordEngine.h"
 using namespace AlexaWakeWord::Logger;
 
 namespace AlexaWakeWord {
@@ -30,6 +30,11 @@ std::unique_ptr<WakeWordEngine> createEngine(
     case EngineType::SENSORY_ENGINE:
       log(Logger::DEBUG, "WakeWordEngineFactory: creating Sensory Engine");
       return make_unique<SensoryWakeWordEngine>(interface);
+	  
+    case EngineType::GPIO_ENGINE:
+      log(Logger::DEBUG, "WakeWordEngineFactory: creating GPIO Engine");
+      return make_unique<GPIOWakeWordEngine>(interface);
+	  
     default:
       log(Logger::ERROR, "WakeWordEngineFactory: unhandled switch case");
       return nullptr;
